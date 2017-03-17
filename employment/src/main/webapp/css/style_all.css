@@ -1,0 +1,313 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.clear_fix{
+    clear: both;
+}
+
+
+/*管理员登录页*/
+.login{
+    background-image:url("../img/index_bg.jpg");
+    background-position: top 0 center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.login_box{
+    width: 340px;
+    margin: 0 auto;
+    border: 1px lightgray solid;
+    border-radius: 6px;
+    margin-top: 15%;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+.login_box li {
+    padding:10px 20px;
+
+}
+.box_title{
+    font-size: 20px;
+    font-weight: bold;
+    color: dodgerblue;
+    margin-top: 10px;
+}
+.login_box input{
+    border: solid darkgray 1px;
+    border-radius: 2px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right:10px; ;
+    font-size: 14px;
+    outline: none;
+}
+#submit{
+    background:dodgerblue ;
+    color: white;
+    font-size: 16px;
+    border: 0;
+    border-radius: 4px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#code{
+    background:lightgray;
+    border: 0;
+    border-radius: 0;
+}
+
+/*个人中心*/
+.center_bg{
+    background:url("../img/center_bg.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:center 0px;
+}
+.nav{
+    background: #ffffff;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+.nav a{
+    color: darkgray;
+    margin-left: 30px;
+}
+.nav a:hover{
+    color: #738cf9;
+}
+#usmessage{
+    color: darkgray;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.nav img{
+    height: 40px;
+    margin-left: 10px;
+}
+
+#messagelist{
+    width: 600px;
+    background: #ffffff;
+    border: 1px solid darkgray;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+#messagelist dt{
+    font-size: 16px;
+    font-weight: bold;
+    color: #738cf9;
+    line-height: 40px;
+    padding-top: 20px;
+}
+#messagelist dd{
+    line-height: 30px;
+    color:black;
+    width: 100%;
+}
+#messagelist span{
+    color: darkgray;
+    padding-left: 120px;
+}
+.btn{
+    background:dodgerblue ;
+    color: white;
+    font-size: 14px;
+    border: 0;
+    border-radius: 4px;
+    width: 200px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    margin-top: 30px;
+}
+.btn:hover{
+    background:darkblue;
+}
+
+/*用户查询*/
+.check_box{
+    width: 340px;
+    margin: 0 auto;
+    border: 1px lightgray solid;
+    border-radius: 6px;
+    margin-top: 15%;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+.check_box li {
+    padding:10px 20px;
+
+}
+.check_box input{
+    border: solid darkgray 1px;
+    border-radius: 2px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right:10px; ;
+    font-size: 14px;
+    outline: none;
+}
+.check_box a{
+    font-size: 12px;
+    color: lightgray;
+}
+.check_box a:hover{
+    color: #738cf9;
+}
+.check_bg{
+    background-image:url("../img/index_bg.jpg");
+    background-position: top 0 center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/*设置信息*/
+
+.message_bg{
+    background: url("../img/index_bg.jpg");
+    background-position: center top 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.message_box{
+    width: 300px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 10px 20px 30px 20px;
+    margin-top: 10%;
+}
+.message_box dt{
+    font-size: 16px;
+    font-weight: bold;
+    color: #738cf9;
+    line-height: 40px;
+    padding-top: 20px;
+}
+.message_box dd{
+    line-height: 30px;
+    color:black;
+    width: 100%;
+    font-size: 14px;
+}
+.message_box input{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    line-height: 20px;
+    outline: none;
+}
+section option {
+    outline: none;
+    color: darkgray;
+    background: #ffffff;
+}
+
+/*管理员设置信息*/
+.add_message input{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    line-height: 20px;
+    outline: none;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 80px;
+}
+.add_message{
+    font-size: 14px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    width: 500px;
+    padding-left: 55px;
+    padding-right: 45px;
+    background: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    float: left;
+    height: 167px;
+}
+.top_title{
+    float: left;
+    background: #ffffff;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    width: 176px;
+    height: 207px;
+    margin-right: 20px;
+}
+.message_col{
+    width: 800px;
+    margin: 0 auto;
+}
+.top_title p {
+    font-size: 30px;
+    text-align: center;
+    line-height: 207px;
+}
+.input_box{
+    background: url("../img/center_bg.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:center 0px
+}
+.left_nav{
+    position: fixed;
+    left: 10px;
+    top:30%;
+    background: #ffffff;
+}
+.left_nav li{
+    width: 35px;
+    padding: 20px;
+    border-bottom: lightgray 1px solid;
+}
+.left_nav li:hover{
+    background:#738cf9;
+    color: white;
+}
+.left_nav li a{
+    color: #000;
+}
+.left_nav_active{
+    background:#738cf9;
+    color: white;
+}
+.base_list{
+    background: #ffffff;
+    border:lightgray 1px solid ;
+    width: 800px;
+    border-radius: 6px;
+    padding-top: 40px;
+    font-size: 14px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+.base_list tr{
+    height: 30px;
+}
+.base_list td{
+    border-bottom: 1px solid #738cf9;
+}
+.base_list button{
+    background:#738cf9;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+}

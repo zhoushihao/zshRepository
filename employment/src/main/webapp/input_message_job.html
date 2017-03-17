@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员管理就业信息</title>
+    <link href="css/style_all.css" rel="stylesheet">
+</head>
+
+<body class="input_box">
+
+<div class="nav">
+    <img src="img/logo.png">
+    <a href="#">信息查询</a>
+    <p id="usmessage">正在读取</p>
+</div>
+    <div class="message_col">
+        <div class="top_title">
+            <p>就业信息</p>
+        </div>
+        <div class="add_message">
+            学&nbsp;&nbsp;号：<input type="text">姓&nbsp;&nbsp;名：<input type="text">实习公司：<input type="text"></br>
+            学&nbsp;&nbsp;院：<input type="text">专&nbsp;&nbsp;业：<input type="text"></br>
+                <button class="btn">添加</button>
+        </div>
+        <div class="clear_fix"></div>
+    </div>
+    <ul class="left_nav">
+        <li><a href="#">基本信息</a></li>
+        <li class="left_nav_active"> 就业信息</li>
+        <li><a href="#">公司信息</a></li>
+        <li><a href="#">数据统计</a></li>
+    </ul>
+    <table class="base_list">
+        <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>学校</th>
+        <th>专业</th>
+        <th>实习公司</th>
+        <th>就业公司</th>
+        <th>操作</th>
+        </tr>
+        <tr>
+            <td contenteditable="true">1320420135</td>
+            <td>林狗蛋</td>
+            <td>浙江财经大学</td>
+            <td>电子商务</td>
+            <td>跨界科技</td>
+            <td>无</td>
+
+            <td>
+                <button>修改</button>
+                <button>完成</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
