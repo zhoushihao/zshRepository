@@ -37,6 +37,9 @@ public class StudentCatchInfoViewBean extends BaseModel implements Serializable{
     private String major_number;//专业编号
     private String major_name;//专业名字
     private String classroom_number;//班级编号
+    private String company_name;
+    private String company_address;
+    private String manager;
 
     //
     private String person_amount;//人数
@@ -44,6 +47,30 @@ public class StudentCatchInfoViewBean extends BaseModel implements Serializable{
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public String getCompany_address() {
+        return company_address;
+    }
+
+    public void setCompany_address(String company_address) {
+        this.company_address = company_address;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
     public String getUniversity_number() {
