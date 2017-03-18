@@ -35,7 +35,7 @@ public class CompanyController extends SysBaseController{
     public void queryStudents(Model model,HttpServletResponse response){
         try {
             QueryParam queryParam = getParamBean(RequestKey.query,QueryParam.class);
-            List<CompanyBean> list = companyService.queryCompanies(queryParam);
+            List<CompanyBean> list = companyService.selectCompanies(queryParam);
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "操作成功！" , jsonList(list)));
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
