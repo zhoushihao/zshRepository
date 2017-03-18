@@ -50,16 +50,17 @@ public class UserController extends SysBaseController{
         }
     }
 
-    @RequestMapping(value = "/")
-    public void configCenterModel(Model model, HttpServletResponse response) {
-        try {
-            response.sendRedirect("/index.html");
-        } catch (BaseException be) {
-            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
-        } catch (Exception e) {
-            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
-        }
-    }
+//    @RequestMapping(value = "/login")
+//    public void configCenterModel(Model model, HttpServletResponse response) {
+//        try {
+////            response.sendRedirect("/index.html");
+//            request.getRequestDispatcher("/index.html").forward(request, response);
+//        } catch (BaseException be) {
+//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
+//        } catch (Exception e) {
+//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
+//        }
+//    }
 
     /**
      * 登录
