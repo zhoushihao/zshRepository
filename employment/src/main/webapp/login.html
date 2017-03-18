@@ -37,30 +37,39 @@
     <!--}-->
     <!--</script>-->
     <script>
+        document.cookie
 
             $(function () {
-
-//                    var arr = null;
+                    var a ={};
+                    var b ={"user_number":"110","user_password":"110"};
+                    a.queryFormParams=JSON.stringify(b);
                     $("#submit").click(function () {
 
-//                            arr = {
-//                                "user_number": $('#usname').val(),
-//                                "user_password": $('#password').val()
+//                           {
+//                                "user_number": "110",
+//                                "user_password": "110"
 //                            }
+
+
 
                         $.ajax({
                             /*请求地址*/
-                            url: "/employment/user/login/query.do",
-                            data: {
-                                "queryFormParams":{
+                            url: '/employment/user/login/query.do',
+                            data:{
+                                "queryFormParams":JSON.stringify(
+                                    {
+                                        "user_number": "110",
+                                        "user_password": "110"
+                                    }
+                                )
 
-                                            "user_number": $('#usname').val(),
-                                            "user_password": $('#password').val()
-                                }
-                            },
+                            }
+                               ,
+
                             type: "POST",
+                            datatype:"json",
                             success: function (data) {
-                                alert("ok");
+                                alert(data.description);
                             },
                             error: function (e) {
                                 alert("no")
