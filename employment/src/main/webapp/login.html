@@ -4,6 +4,76 @@
     <meta charset="UTF-8">
     <title>管理员登录</title>
     <link href="css/style_all.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <!--<script>-->
+        <!--window.onload = function () {-->
+
+            <!--var code; //在全局 定义验证码-->
+            <!--var code2; //在全局 定义验证码-->
+            <!--function createCode() {-->
+                <!--code = "";-->
+                <!--var checkCode = document.getElementById("checkCode");-->
+                <!--function RndNum(n) {-->
+                    <!--var rnd = "";-->
+                    <!--for (var i = 0; i < n; i++)-->
+                        <!--rnd += Math.floor(Math.random() * 10);-->
+                    <!--return rnd;-->
+                <!--}-->
+
+                <!--var num = RndNum(2);-->
+                <!--var num2 = RndNum(2);-->
+
+                <!--code = num + "+" + num2 + "=";-->
+                <!--code2 = parseInt(num) + parseInt(num2)-->
+
+                <!--if (checkCode) {-->
+                    <!--checkCode.className = "code";-->
+                    <!--checkCode.value = code;-->
+                <!--}-->
+
+            <!--}-->
+
+
+    <!--}-->
+    <!--</script>-->
+    <script>
+
+            $(function () {
+
+//                    var arr = null;
+                    $("#submit").click(function () {
+
+//                            arr = {
+//                                "user_number": $('#usname').val(),
+//                                "user_password": $('#password').val()
+//                            }
+
+                        $.ajax({
+                            /*请求地址*/
+                            url: "/employment/user/login/query.do",
+                            data: {
+                                "queryFormParams":{
+
+                                            "user_number": $('#usname').val(),
+                                            "user_password": $('#password').val()
+                                }
+                            },
+                            type: "POST",
+                            success: function (data) {
+                                alert("ok");
+                            },
+                            error: function (e) {
+                                alert("no")
+                            }
+
+
+                        })
+
+                    })
+                    }
+                )
+
+    </script>
 </head>
 <body class="login">
 <div class="nav">

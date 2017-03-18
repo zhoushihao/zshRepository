@@ -4,6 +4,47 @@
     <meta charset="UTF-8">
     <title>管理员管理基本信息</title>
     <link href="css/style_all.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            var aJSON = {
+                "student_number":[1111,2222,33333,44444,5555,6666,7777,888,988,18880,17771],
+                "student_name":[1111,21111,31111,41111,51111,61111,71111,81111,9,10,11],
+                "id_card":[11111,2,3,4,5,6,7,8,9,10,11],
+                "native_place":[11111,2,3,4,5,6,7,8,9,10,11],
+                "college_name":[11111,2,3,4,5,6,7,8,9,10,11],
+                "major_name":[11111,2,3,4,5,6,7,8,9,10,11],
+                "graduation_time":[11111,2,3,4,5,6,7,8,9,10,11],
+                "sex":[11111,2,3,4,5,6,7,8,9,10,11],
+                "age":[11111,2,3,4,5,6,7,8,9,10,11]
+            }
+
+            var oList = document.getElementById('base_list')
+            var aTr = oList.getElementsByTagName('tr')
+            var aTd = oList.getElementsByTagName('td')
+            var len = aJSON.student_number.length;
+            for(var i=0;i < len ;i++){
+                oList.innerHTML += '<tr></tr>'
+                aTr[i].innerHTML +=
+                    '<td>'+aJSON.student_number[i] +'</td>'+
+                    '<td>'+aJSON.student_name[i] +'</td>'+
+                    '<td>'+aJSON.id_card[i] +'</td>'+
+                    '<td>'+aJSON.native_place[i] +'</td>'+
+                    '<td>'+aJSON.college_name[i] +'</td>'+
+                    '<td>'+aJSON.major_name[i] +'</td>'+
+                    '<td>'+'年级x'+'</td>'+
+                    '<td>'+aJSON.graduation_time[i] +'</td>'+
+                    '<td>'+aJSON.sex[i] +'</td>'+
+                    '<td>'+aJSON.age[i] +'</td>'+
+                    '<td><button>修改</button>&nbsp;<button>完成</button></td>'
+
+
+
+            }
+
+        })
+
+    </script>
 </head>
 
 <body class="input_box">
@@ -31,36 +72,38 @@
         <li><a href="#">公司信息</a></li>
         <li><a href="#">数据统计</a></li>
     </ul>
-    <table class="base_list">
-        <tr>
-        <th>学号</th>
-        <th>姓名</th>
-        <th>身份证号</th>
-        <th>户籍</th>
-        <th>学校</th>
-        <th>专业</th>
-        <th>毕业时间</th>
-        <th>年级</th>
-        <th>性别</th>
-        <th>年龄</th>
-        <th>操作</th>
-        </tr>
-        <tr>
-            <td contenteditable="true">1320420135</td>
-            <td>林狗蛋</td>
-            <td>330381199501204311</td>
-            <td>温州</td>
-            <td>浙江财经大学</td>
-            <td>电子商务</td>
-            <td>2017年</td>
-            <td>大四</td>
-            <td>男</td>
-            <td>22</td>
-            <td>
-                <button>修改</button>
-                <button>完成</button>
-            </td>
-        </tr>
+    <table class="base_list" id="base_list">
+        <!--<tbody>-->
+        <!--<tr>-->
+        <!--<th>学号</th>-->
+        <!--<th>姓名</th>-->
+        <!--<th>身份证号</th>-->
+        <!--<th>户籍</th>-->
+        <!--<th>学院</th>-->
+        <!--<th>专业</th>-->
+        <!--<th>毕业时间</th>-->
+        <!--<th>年级</th>-->
+        <!--<th>性别</th>-->
+        <!--<th>年龄</th>-->
+        <!--<th>操作</th>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+        <!--<tr>-->
+            <!--<td contenteditable="true">1320420135</td>-->
+            <!--<td>林狗蛋</td>-->
+            <!--<td>330381199501204311</td>-->
+            <!--<td>温州</td>-->
+            <!--<td>浙江财经大学</td>-->
+            <!--<td>电子商务</td>-->
+            <!--<td>2017年</td>-->
+            <!--<td>大四</td>-->
+            <!--<td>男</td>-->
+            <!--<td>22</td>-->
+            <!--<td>-->
+                <!--<button>修改</button>-->
+                <!--<button>完成</button>-->
+            <!--</td>-->
+        <!--</tr>-->
     </table>
 </body>
 </html>

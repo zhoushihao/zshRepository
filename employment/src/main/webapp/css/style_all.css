@@ -301,7 +301,10 @@ section option {
 }
 .base_list tr{
     height: 30px;
+
 }
+
+
 .base_list td{
     border-bottom: 1px solid #738cf9;
 }
