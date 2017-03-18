@@ -314,3 +314,21 @@ section option {
     padding: 5px;
     border-radius: 2px;
 }
+/*学校信息*/
+
+#search_text{
+    display: block;
+    width: 300px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding-left: 15px;
+}
+#search_num{
+    display: block;
+    width: 300px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-left: 15px;
+}
