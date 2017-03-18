@@ -74,13 +74,13 @@ public class UserController extends SysBaseController{
             if(user != null){
                 Cookie cookie = CookieUtils.getCookieByName(request,"user_id");
                 if(cookie == null){
-                    cookie = new Cookie("university_id",user.getUser_id());
+                    cookie = new Cookie("user_id",user.getUser_id());
                     cookie.setMaxAge(60*60*24*200);
                     response.addCookie(cookie);
                 }else{
                     cookie.setValue(user.getUser_id());
                 }
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功！",null));
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功！",user.getUser_name()));
             }else{
                 ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "登录失败！",null));
             }
