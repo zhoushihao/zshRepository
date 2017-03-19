@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员管理就业信息</title>
+    <link href="css/style_all.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            var keyWord = "";
+            var keyNum = "";
+            var oList = document.getElementById('base_list')
+            var aTr = oList.getElementsByTagName('tr')
+            var aTd = oList.getElementsByTagName('td')
+            var len = '';
+            var aJSON;
+            $("#search").click(
+                function () {
+                    $("#base_list").html("");
+                    keyWord = $("#search_text").val();
+                   keyNum = $("#search_num").val();
+                    $.ajax({
+                        url:"/employment/configCenter/university/query.do",
+                        type:"POST",
+                        datatype:"json",
+                        data:{
+                            "queryFormParams":JSON.stringify(
+                                {
+                                    "wheres": [{"field":"university_name","operate":"like","value":keyWord},
+                                                                {"field":"university_number","operate":"like","value":keyNum}
+
+                                        ]
+
+                                }
+
+
+                            )
+                        },
+                        success:function (result) {
+                            aJSON = result.data.list
+                            len = aJSON.length;
+                            for(var i=0;i < len ;i++){
+                                oList.innerHTML += '<tr></tr>'
+                                aTr[i].innerHTML +=
+                                    '<td>'+aJSON[i].insert_date+'</td>'+
+                                    '<td>'+aJSON[i].university_name +'</td>'+
+                                    '<td>'+aJSON[i].university_number +'</td>'+
+                                    '<td><button>修改</button>&nbsp;<button>完成</button></td>'
+
+
+
+                            }
+                        },
+                        error:function () {
+                            alert("服务器出错")
+                        }
+
+
+                    })
+
+
+                }
+            )
+
+        })
+
+
+    </script>
+</head>
+
+<body class="input_box">
+
+<div class="nav">
+    <img src="img/logo.png">
+    <a href="#">信息查询</a>
+    <p id="usmessage">正在读取</p>
+</div>
+    <div class="message_col">
+    <div class="top_title">
+        <p>学校信息</p>
+    </div>
+
+        <div class="add_message">
+           <input type="text" placeholder="请输入学校信息" id="search_text">
+            <input type="text" placeholder="请输入学校编码" id="search_num">
+            <button class="btn" id="search">搜索</button>
+        </div>
+        <div class="clear_fix"></div>
+    </div>
+<ul class="left_nav">
+    <li ><a href="input_message_base.html">基本信息</a> </li>
+    <li><a href="input_message_job.html"> 就业信息</a></li>
+    <li class="left_nav_active"><a href="#">学校信息</a></li>
+    <li><a href="input_message_sum.html">数据统计</a></li>
+</ul>
+<table class="base_list" id="base_list">
+    <!--<tbody>-->
+    <!--<tr>-->
+    <!--<td>1</td>-->
+    <!--<td>2</td>-->
+    <!--<td>3</td>-->
+    <!--<td>4</td>-->
+        <!--<td>5</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+
+</table>
+
+
+    <div class="clear_fix"></div>
+</div>
+<ul class="left_nav">
+    <li><a href="#">基本信息</a></li>
+    <li > 就业信息</li>
+    <li class="left_nav_active"><a href="#">学校信息</a></li>
+    <li><a href="#">数据统计</a></li>
+</ul>
+
+</body>
+</html>

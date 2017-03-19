@@ -41,7 +41,8 @@ public class SysBaseController extends BaseController {
         Cookie cookie = CookieUtils.getCookieByName(request,"user_id");
         BaseModel to = (BaseModel)t;
         to.setIs_del("N");
-        to.setUser_id(cookie.getValue());
+        //TODO 给cookie设置路径
+        to.setUser_id("123");
         return t;
     }
 
