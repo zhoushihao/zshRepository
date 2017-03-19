@@ -63,10 +63,11 @@
 
                             type: "POST",
                             datatype:"json",
-                            success: function (data) {
-                                if (data.state == "success"){
+                            success: function (result) {
+                                if (result.state == "success"){
                                     alert("登陆成功");
-                                    window.location.href = 'input_message_base.html?user_name='+data.username;
+                                    window.location.href = 'input_message_base.html?user_name='+result.data;
+
                                 }else {
                                     alert("账号密码错误")
                                 }

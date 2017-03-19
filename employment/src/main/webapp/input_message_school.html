@@ -8,9 +8,15 @@
     <script>
         $(function () {
             var keyWord = "";
-            var keyNum = ""
+            var keyNum = "";
+            var oList = document.getElementById('base_list')
+            var aTr = oList.getElementsByTagName('tr')
+            var aTd = oList.getElementsByTagName('td')
+            var len = '';
+            var aJSON;
             $("#search").click(
                 function () {
+                    $("#base_list").html("");
                     keyWord = $("#search_text").val();
                    keyNum = $("#search_num").val();
                     $.ajax({
@@ -20,16 +26,35 @@
                         data:{
                             "queryFormParams":JSON.stringify(
                                 {
-                                    "wheres": JSON.stringify([{
-                                        "university_name": keyWord,
-                                        "university_number": keyNum
-                                        }]
-                                    )
+                                    "wheres": [{"field":"university_name","operate":"like","value":keyWord},
+                                                                {"field":"university_number","operate":"like","value":keyNum}
+
+                                        ]
 
                                 }
 
+
                             )
+                        },
+                        success:function (result) {
+                            aJSON = result.data.list
+                            len = aJSON.length;
+                            for(var i=0;i < len ;i++){
+                                oList.innerHTML += '<tr></tr>'
+                                aTr[i].innerHTML +=
+                                    '<td>'+aJSON[i].insert_date+'</td>'+
+                                    '<td>'+aJSON[i].university_name +'</td>'+
+                                    '<td>'+aJSON[i].university_number +'</td>'+
+                                    '<td><button>修改</button>&nbsp;<button>完成</button></td>'
+
+
+
+                            }
+                        },
+                        error:function () {
+                            alert("服务器出错")
                         }
+
 
                     })
 
@@ -71,35 +96,14 @@
 <table class="base_list" id="base_list">
     <!--<tbody>-->
     <!--<tr>-->
-    <!--<th>学号</th>-->
-    <!--<th>姓名</th>-->
-    <!--<th>身份证号</th>-->
-    <!--<th>户籍</th>-->
-    <!--<th>学院</th>-->
-    <!--<th>专业</th>-->
-    <!--<th>毕业时间</th>-->
-    <!--<th>年级</th>-->
-    <!--<th>性别</th>-->
-    <!--<th>年龄</th>-->
-    <!--<th>操作</th>-->
+    <!--<td>1</td>-->
+    <!--<td>2</td>-->
+    <!--<td>3</td>-->
+    <!--<td>4</td>-->
+        <!--<td>5</td>-->
     <!--</tr>-->
     <!--</tbody>-->
-    <!--<tr>-->
-    <!--<td contenteditable="true">1320420135</td>-->
-    <!--<td>林狗蛋</td>-->
-    <!--<td>330381199501204311</td>-->
-    <!--<td>温州</td>-->
-    <!--<td>浙江财经大学</td>-->
-    <!--<td>电子商务</td>-->
-    <!--<td>2017年</td>-->
-    <!--<td>大四</td>-->
-    <!--<td>男</td>-->
-    <!--<td>22</td>-->
-    <!--<td>-->
-    <!--<button>修改</button>-->
-    <!--<button>完成</button>-->
-    <!--</td>-->
-    <!--</tr>-->
+
 </table>
 
 
