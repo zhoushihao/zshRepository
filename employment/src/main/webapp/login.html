@@ -40,17 +40,12 @@
         document.cookie
 
             $(function () {
-                    var a ={};
-                    var b ={"user_number":"110","user_password":"110"};
-                    a.queryFormParams=JSON.stringify(b);
+                    var usname = "";
+                    var psword = "";
                     $("#submit").click(function () {
 
-//                           {
-//                                "user_number": "110",
-//                                "user_password": "110"
-//                            }
-
-
+                         usname = $("#usname").val();
+                         psword = $("#psword").val();
 
                         $.ajax({
                             /*请求地址*/
@@ -58,8 +53,8 @@
                             data:{
                                 "queryFormParams":JSON.stringify(
                                     {
-                                        "user_number": "110",
-                                        "user_password": "110"
+                                        "user_number": usname,
+                                        "user_password": psword
                                     }
                                 )
 
@@ -69,10 +64,16 @@
                             type: "POST",
                             datatype:"json",
                             success: function (data) {
-                                alert(data.description);
+                                if (data.state == "success"){
+                                    alert("登陆成功");
+                                    window.location.href = 'input_message_base.html?user_name='+data.username;
+                                }else {
+                                    alert("账号密码错误")
+                                }
+
                             },
                             error: function (e) {
-                                alert("no")
+                                alert("服务器出错")
                             }
 
 
