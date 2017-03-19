@@ -51,50 +51,50 @@ public class ConfigController extends SysBaseController {
     /*
     查询学院
      */
-//    @RequestMapping(value = "/configCenter/college/query.do", method = RequestMethod.POST)
-//    public void queryColleges(Model model, HttpServletResponse response) {
-//        try {
-//            CollegeBean collegeBean = getParamBean(RequestKey.queryDetail, CollegeBean.class);
-//            List<CollegeBean> list = configService.queryCollege(collegeBean);
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
-//        } catch (BaseException be) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
-//        } catch (Exception e) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
-//        }
-//    }
+    @RequestMapping(value = "/college/query.do", method = RequestMethod.POST)
+    public void queryColleges(Model model, HttpServletResponse response) {
+        try {
+            UniversityBean collegeBean = getParamBean(RequestKey.queryDetail, UniversityBean.class);
+            List<CollegeBean> list = configService.queryCollege(collegeBean);
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
+        } catch (BaseException be) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
+        } catch (Exception e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
+        }
+    }
 
     /*
     查询专业
      */
-//    @RequestMapping(value = "/configCenter/major/query.do", method = RequestMethod.POST)
-//    public void queryMajors(Model model, HttpServletResponse response) {
-//        try {
-//            MajorBean majorBean = getParamBean(RequestKey.queryDetail, MajorBean.class);
-//            List<MajorBean> list = configService.queryMajor(majorBean);
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
-//        } catch (BaseException be) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
-//        } catch (Exception e) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
-//        }
-//    }
+    @RequestMapping(value = "/configCenter/major/query.do", method = RequestMethod.POST)
+    public void queryMajors(Model model, HttpServletResponse response) {
+        try {
+            CollegeBean majorBean = getParamBean(RequestKey.queryDetail, CollegeBean.class);
+            List<MajorBean> list = configService.queryMajor(majorBean);
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
+        } catch (BaseException be) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
+        } catch (Exception e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
+        }
+    }
 
     /*
     查询班级
      */
-//    @RequestMapping(value = "/configCenter/classroom/query.do", method = RequestMethod.POST)
-//    public void queryClassrooms(Model model, HttpServletResponse response) {
-//        try {
-//            ClassroomBean classroomBean = getParamBean(RequestKey.queryDetail, ClassroomBean.class);
-//            List<ClassroomBean> list = configService.queryClassroom(classroomBean);
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
-//        } catch (BaseException be) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
-//        } catch (Exception e) {
-//            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
-//        }
-//    }
+    @RequestMapping(value = "/configCenter/classroom/query.do", method = RequestMethod.POST)
+    public void queryClassrooms(Model model, HttpServletResponse response) {
+        try {
+            MajorBean classroomBean = getParamBean(RequestKey.queryDetail, MajorBean.class);
+            List<ClassroomBean> list = configService.queryClassroom(classroomBean);
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.SUCCESS, "操作成功!", jsonList(list)));
+        } catch (BaseException be) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + be.getMessage(), null));
+        } catch (Exception e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.QUERYTYPE, ResponseResult.ERROR, "操作失败：" + e.getMessage(), null));
+        }
+    }
 
     /*
     提交，修改
@@ -102,7 +102,6 @@ public class ConfigController extends SysBaseController {
     @RequestMapping(value = "/university/post.do", method = RequestMethod.POST)
     public void postWay(Model model, HttpServletResponse response) {
         try {
-
             UniversityBean universityBean = getParamBean(RequestKey.update, UniversityBean.class);
             if (null == universityBean.getUniversity_id()){
                 configService.insert(universityBean);

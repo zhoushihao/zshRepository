@@ -13,7 +13,7 @@ public interface ICompanyService extends ISuperService<CompanyBean>{
 
     List<CompanyBean> selectCompanies(QueryParam queryParam);
 
-    List<CompanyBean> queryCompanies(QueryParam queryParam);
+//    List<CompanyBean> queryCompanies(QueryParam queryParam);
 
     boolean insertCompany(CompanyBean bean);
 
