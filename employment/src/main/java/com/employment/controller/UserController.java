@@ -77,6 +77,7 @@ public class UserController extends SysBaseController{
                 if(cookie == null){
                     cookie = new Cookie("user_id",user.getUser_id());
                     cookie.setMaxAge(60*60*24*200);
+                    cookie.setPath("/");
                     response.addCookie(cookie);
                 }else{
                     cookie.setValue(user.getUser_id());
@@ -93,20 +94,34 @@ public class UserController extends SysBaseController{
     }
 
     /**
+     * 验证账号是否已存在
+     */
+    @RequestMapping(value = "/login/check.do",method = RequestMethod.POST)
+    public void exist (Model model, HttpServletResponse response) {
+        try {
+            UserBean user = getParamBean(RequestKey.update,UserBean.class);
+            List<UserBean> list = userService.isExsit(user);
+            if(list != null && list.size() > 0){
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "账号已被占用", null));
+            }else{
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "账号可以使用", null));
+            }
+        } catch (BaseException e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
+        } catch (Exception e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
+        }
+    }
+
+    /**
      * 注册
      */
     @RequestMapping(value = "/login/post.do",method = RequestMethod.POST)
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,UserBean.class);
-            List<UserBean> list = userService.isExsit(user);
             userService.insert(user);
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
-            if(list == null && list.size()==0){
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
-            }else{
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
-            }
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
         } catch (Exception e) {
