@@ -28,7 +28,7 @@
 }
 .login_box li {
     padding:10px 20px;
-
+    position: relative;
 }
 .box_title{
     font-size: 20px;
@@ -331,4 +331,13 @@ section option {
     margin: 0 auto;
     margin-top: 10px;
     padding-left: 15px;
+}
+
+/*用户注册*/
+#img_tf{
+    width: 25px;
+    position: absolute;
+    right: 100px;
+    top: 12px;
+
 }

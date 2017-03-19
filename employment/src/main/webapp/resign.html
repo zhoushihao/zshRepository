@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link href="css/style_all.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            var user_name = "";
+            var user_number = "";
+            var user_password = "";
+
+            $("#usnumaber").blur(
+                function () {
+                    user_number =  $("#usnumaber").val();
+
+                    $.ajax({
+                        type:"POST",
+                        url:"/employment/user/login/post.do",
+                        data:{
+                            "postBean":JSON.stringify({"user_number":user_number})
+                        },
+                        success:function (result) {
+                                if (user_number == ""){
+                                    $("#img_tf").get(0).src = "img/fls.png"
+                                }else
+                                if(result.state =="success"){
+                                    $("#img_tf").get(0).src = "img/ture.png"
+                                }else {
+                                    $("#img_tf").get(0).src = "img/fls.png"
+                                }
+                        },
+                        error:function () {
+                            alert("服务器异常")
+                        }
+                    })
+
+//                    else if(){
+//
+//                    }
+                }
+            )
+        })
+
+    </script>
+</head>
+<body class="login">
+<div class="nav">
+    <img src="img/logo.png">
+    <a href="#">信息查询</a>
+</div>
+<ul class="login_box">
+    <li class="box_title">用户注册</li>
+    <li> <input type="text" id="usname" placeholder="姓&nbsp;名"></li>
+    <li> <input type="text" id="usnumaber" placeholder="帐&nbsp;号"><img id="img_tf" src=""></li>
+    <li> <input type="password" id="psword" placeholder="密&nbsp;码"></li>
+    <li><input type="password" id="psword_re" placeholder="确&nbsp;认&nbsp;密&nbsp;码"></li>
+    <li> <input type="button" value="注册" id="submit"></li>
+</ul>
+
+
+</body>
+</html>
