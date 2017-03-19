@@ -23,4 +23,6 @@ public interface IUserService extends ISuperService<UserBean>{
 
     //查询学校
     List<UniversityBean> queryUniversities(QueryParam queryParam);
+
+    List<UserBean> isExsit(UserBean user);
 }

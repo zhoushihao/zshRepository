@@ -99,8 +99,13 @@ public class UserController extends SysBaseController{
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,UserBean.class);
-            userService.insert(user);
-            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
+            List<UserBean> list = userService.isExsit(user);
+            if(list == null && list.size()>0){
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "用户名已存在！", null));
+            }else{
+                userService.insert(user);
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "注册成功!", null));
+            }
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
         } catch (Exception e) {

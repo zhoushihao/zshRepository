@@ -56,4 +56,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao, UserBean> implemen
         return universityService.selectUniversities(queryParam);
     }
 
+    public List<UserBean> isExsit(UserBean user) {
+        EntityWrapper<UserBean> ew = new EntityWrapper<UserBean>(user);
+        List<UserBean> list = selectList(ew);
+        return list;
+    }
+
 }
