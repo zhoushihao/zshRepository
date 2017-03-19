@@ -94,19 +94,34 @@ public class UserController extends SysBaseController{
     }
 
     /**
+     * 验证账号是否已存在
+     */
+    @RequestMapping(value = "/login/check.do",method = RequestMethod.POST)
+    public void exist (Model model, HttpServletResponse response) {
+        try {
+            UserBean user = getParamBean(RequestKey.update,UserBean.class);
+            List<UserBean> list = userService.isExsit(user);
+            if(list != null && list.size() > 0){
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "账号已被占用", null));
+            }else{
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "账号可以使用", null));
+            }
+        } catch (BaseException e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
+        } catch (Exception e) {
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
+        }
+    }
+
+    /**
      * 注册
      */
     @RequestMapping(value = "/login/post.do",method = RequestMethod.POST)
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,UserBean.class);
-            List<UserBean> list = userService.isExsit(user);
-            if(list == null && list.size()==0){
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
-            }else{
-//                userService.insert(user);
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
-            }
+            userService.insert(user);
+            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
         } catch (Exception e) {
