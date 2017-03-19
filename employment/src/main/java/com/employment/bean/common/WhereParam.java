@@ -12,9 +12,9 @@ public class WhereParam implements Serializable {
             exist = false
     )
     private static final long serialVersionUID = 1L;
-    private String field;
-    private String operate;
-    private String value;
+    private String field;//参数名
+    private String operate;//比较方式
+    private String value;//值
 
     public WhereParam() {
     }

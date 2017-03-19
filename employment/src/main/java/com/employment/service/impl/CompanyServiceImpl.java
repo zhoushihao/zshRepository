@@ -30,9 +30,6 @@ public class CompanyServiceImpl extends BaseServiceImpl<CompanyDao,CompanyBean> 
         return list;
     }
 
-    public List<CompanyBean> queryCompanies(QueryParam queryParam) {
-        return null;
-    }
 
     public boolean insertCompany(CompanyBean bean) {
         bean.setInsert_date(new Date());
@@ -43,6 +40,7 @@ public class CompanyServiceImpl extends BaseServiceImpl<CompanyDao,CompanyBean> 
     public boolean updateCompany(CompanyBean bean) {
         String[] include = {"company_name","comapny_address","manager"};
         CompanyBean update = (CompanyBean)BeanUtil.copyProperties(bean,new CompanyBean(),include);
+        update.setUpdate_date(new Date());
         CompanyBean where = (CompanyBean)BeanUtil.newBean(bean,new CompanyBean());
         where.setCompany_id(bean.getCompany_id());
         updateSelective(update,where);

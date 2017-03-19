@@ -77,6 +77,7 @@ public class UserController extends SysBaseController{
                 if(cookie == null){
                     cookie = new Cookie("user_id",user.getUser_id());
                     cookie.setMaxAge(60*60*24*200);
+                    cookie.setPath("/");
                     response.addCookie(cookie);
                 }else{
                     cookie.setValue(user.getUser_id());
@@ -99,8 +100,13 @@ public class UserController extends SysBaseController{
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,UserBean.class);
-            userService.insert(user);
-            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
+            List<UserBean> list = userService.isExsit(user);
+            if(list == null && list.size()>0){
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "用户名已存在！", null));
+            }else{
+                userService.insert(user);
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "注册成功!", null));
+            }
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
         } catch (Exception e) {
