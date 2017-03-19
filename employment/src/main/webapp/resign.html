@@ -14,9 +14,7 @@
             $("#usnumaber").blur(
                 function () {
                     user_number =  $("#usnumaber").val();
-                    if (user_number == ""){
-                        $("#img_tf").get(0).src = "img/fls.png"
-                    }
+
                     $.ajax({
                         type:"POST",
                         url:"/employment/user/login/post.do",
@@ -24,6 +22,9 @@
                             "postBean":JSON.stringify({"user_number":user_number})
                         },
                         success:function (result) {
+                                if (user_number == ""){
+                                    $("#img_tf").get(0).src = "img/fls.png"
+                                }else
                                 if(result.state =="success"){
                                     $("#img_tf").get(0).src = "img/ture.png"
                                 }else {

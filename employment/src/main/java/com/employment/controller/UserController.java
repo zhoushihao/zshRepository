@@ -101,11 +101,11 @@ public class UserController extends SysBaseController{
         try {
             UserBean user = getParamBean(RequestKey.update,UserBean.class);
             List<UserBean> list = userService.isExsit(user);
-            if(list == null && list.size()>0){
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "用户名已存在！", null));
+            if(list == null && list.size()==0){
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
             }else{
-                userService.insert(user);
-                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "注册成功!", null));
+//                userService.insert(user);
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, null, null));
             }
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));

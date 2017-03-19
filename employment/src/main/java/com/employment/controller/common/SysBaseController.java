@@ -39,10 +39,11 @@ public class SysBaseController extends BaseController {
         String paramJson  = wr.getParameter(beanName);
         T t = JSONObject.parseObject(paramJson, clazz);
         Cookie cookie = CookieUtils.getCookieByName(request,"user_id");
-        BaseModel to = (BaseModel)t;
+        BaseModel to = (BaseModel)t;;
         to.setIs_del("N");
         //TODO 给cookie设置路径
-        to.setUser_id(cookie.getValue());
+//        to.setUser_id(cookie.getValue());
+        to.setUser_id("123");
         return t;
     }
 
