@@ -52,6 +52,7 @@
 
                         user_password = $("#psword").val();
                         repassword = $("#psword_re").val();
+
                         if(user_password < 6 ){
                             $("#img_rw").get(0).src = "img/fls.png";
                             pstf = false;
@@ -67,7 +68,7 @@
                     }
             )
             $("#submit").click(function () {
-                if(pstf == true&ustf ==true){
+                if(pstf == true&&ustf ==true){
                     $.ajax({
                         url:"/employment/user/login/post.do",
                         type:"POST",
