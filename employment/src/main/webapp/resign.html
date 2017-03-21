@@ -10,37 +10,85 @@
             var user_name = "";
             var user_number = "";
             var user_password = "";
-
+            var repassword = "";
+            var ustf = "";
+            var pstf = "";
             $("#usnumaber").blur(
-                function () {
-                    user_number =  $("#usnumaber").val();
+                    function () {
+                        user_number =  $("#usnumaber").val();
 
-                    $.ajax({
-                        type:"POST",
-                        url:"/employment/user/login/post.do",
-                        data:{
-                            "postBean":JSON.stringify({"user_number":user_number})
-                        },
-                        success:function (result) {
-                                if (user_number == ""){
-                                    $("#img_tf").get(0).src = "img/fls.png"
-                                }else
-                                if(result.state =="success"){
-                                    $("#img_tf").get(0).src = "img/ture.png"
-                                }else {
-                                    $("#img_tf").get(0).src = "img/fls.png"
-                                }
-                        },
-                        error:function () {
-                            alert("服务器异常")
-                        }
+                        $.ajax({
+                            type:"POST",
+                            url:"/employment/user/login/check.do",
+                            data:{
+                                "postBean":JSON.stringify({"user_number":user_number})
+                            },
+                            success:function (result) {
+                                    if (user_number.length < 6){
+                                        $("#img_tf").get(0).src = "img/fls.png";
+                                        ustf = false;
+                                        alert("账号密码不小于6位");
+                                    }else if(result.state =="success"){
+                                        $("#img_tf").get(0).src = "img/ture.png";
+                                        ustf = true;
+                                    }else {
+                                        $("#img_tf").get(0).src = "img/fls.png";
+                                        ustf = false;
+                                        alert("账号密码不小于6位");
+                                    }
+                            },
+                            error:function () {
+                                alert("服务器异常")
+                            }
                     })
 
-//                    else if(){
-//
-//                    }
+
                 }
             )
+
+            $("#psword_re").blur(
+                    function () {
+
+
+                        user_password = $("#psword").val();
+                        repassword = $("#psword_re").val();
+                        if(user_password < 6 ){
+                            $("#img_rw").get(0).src = "img/fls.png";
+                            pstf = false;
+                            alert("账号密码不小于6位");
+                        }else if(user_password == repassword ){
+                            $("#img_rw").get(0).src = "img/ture.png";
+                            pstf = true;
+                        }else {
+                            $("#img_rw").get(0).src = "img/fls.png";
+                            pstf = false;
+                            alert("两次输入不一致");
+                        }
+                    }
+            )
+            $("#submit").click(function () {
+                if(pstf == true&ustf ==true){
+                    $.ajax({
+                        url:"/employment/user/login/post.do",
+                        type:"POST",
+                        data:{
+                            "postBean":JSON.stringify({
+                                "user_name": $("#usname").val(),
+                                "user_number":$("#usnumaber").val(),
+                                "user_password":$("#password").val()
+                            })
+                        },
+                        success:function (getData) {
+                            
+                        },
+                        error:function () {
+                            alert("服务器出错")
+                        }
+                    })
+                }else {
+                    alert("账号密码格式不正确，账号需大于6位")
+                }
+            })
         })
 
     </script>
@@ -55,7 +103,7 @@
     <li> <input type="text" id="usname" placeholder="姓&nbsp;名"></li>
     <li> <input type="text" id="usnumaber" placeholder="帐&nbsp;号"><img id="img_tf" src=""></li>
     <li> <input type="password" id="psword" placeholder="密&nbsp;码"></li>
-    <li><input type="password" id="psword_re" placeholder="确&nbsp;认&nbsp;密&nbsp;码"></li>
+    <li><input type="password" id="psword_re" placeholder="确&nbsp;认&nbsp;密&nbsp;码"><img id="img_rw" src=""></li>
     <li> <input type="button" value="注册" id="submit"></li>
 </ul>
 
