@@ -99,7 +99,7 @@ public class UserController extends SysBaseController{
     @RequestMapping(value = "/login/check.do",method = RequestMethod.POST)
     public void exist (Model model, HttpServletResponse response) {
         try {
-            UserBean user = getParamBean(RequestKey.update,UserBean.class);
+            UserBean user = getParamBean(RequestKey.update,new UserBean());
             List<UserBean> list = userService.isExsit(user);
             if(list != null && list.size() > 0){
                 ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "账号已被占用", null));
@@ -119,7 +119,7 @@ public class UserController extends SysBaseController{
     @RequestMapping(value = "/login/post.do",method = RequestMethod.POST)
     public void register (Model model, HttpServletResponse response) {
         try {
-            UserBean user = getParamBean(RequestKey.update,UserBean.class);
+            UserBean user = getParamBean(RequestKey.update,new UserBean());
             userService.insert(user);
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
         } catch (BaseException e) {
