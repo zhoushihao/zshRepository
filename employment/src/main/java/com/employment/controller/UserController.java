@@ -9,10 +9,7 @@ import com.employment.bean.common.QueryParam;
 import com.employment.bean.common.ResponseResult;
 import com.employment.controller.common.SysBaseController;
 import com.employment.service.Interface.IUserService;
-import com.employment.utils.BaseException;
-import com.employment.utils.CookieUtils;
-import com.employment.utils.RequestKey;
-import com.employment.utils.ResponseUtils;
+import com.employment.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -120,6 +118,8 @@ public class UserController extends SysBaseController{
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,new UserBean());
+            user.setUser_id(UUIDGeneratorUtil.getUUID());
+            user.setInsert_date(new Date());
             userService.insert(user);
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
         } catch (BaseException e) {
