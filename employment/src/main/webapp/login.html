@@ -6,35 +6,35 @@
     <link href="css/style_all.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <!--<script>-->
-        <!--window.onload = function () {-->
+        window.onload = function () {
 
-            <!--var code; //在全局 定义验证码-->
-            <!--var code2; //在全局 定义验证码-->
-            <!--function createCode() {-->
-                <!--code = "";-->
-                <!--var checkCode = document.getElementById("checkCode");-->
-                <!--function RndNum(n) {-->
-                    <!--var rnd = "";-->
-                    <!--for (var i = 0; i < n; i++)-->
-                        <!--rnd += Math.floor(Math.random() * 10);-->
-                    <!--return rnd;-->
-                <!--}-->
+            var code; //在全局 定义验证码
+            var code2; //在全局 定义验证码
+            function createCode() {
+                code = "";
+                var checkCode = document.getElementById("checkCode");
+                function RndNum(n) {
+                    var rnd = "";
+                    for (var i = 0; i < n; i++)
+                        rnd += Math.floor(Math.random() * 10);
+                    return rnd;
+                }
 
-                <!--var num = RndNum(2);-->
-                <!--var num2 = RndNum(2);-->
+                var num = RndNum(2);
+                var num2 = RndNum(2);
 
-                <!--code = num + "+" + num2 + "=";-->
-                <!--code2 = parseInt(num) + parseInt(num2)-->
+                code = num + "+" + num2 + "=";
+                code2 = parseInt(num) + parseInt(num2)
 
-                <!--if (checkCode) {-->
-                    <!--checkCode.className = "code";-->
-                    <!--checkCode.value = code;-->
-                <!--}-->
+                if (checkCode) {
+                    checkCode.className = "code";
+                    checkCode.value = code;
+                }
 
-            <!--}-->
+            }
 
 
-    <!--}-->
+    }
     <!--</script>-->
     <script>
         document.cookie

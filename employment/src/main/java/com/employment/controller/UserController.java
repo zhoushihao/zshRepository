@@ -118,10 +118,18 @@ public class UserController extends SysBaseController{
     public void register (Model model, HttpServletResponse response) {
         try {
             UserBean user = getParamBean(RequestKey.update,new UserBean());
-            user.setUser_id(UUIDGeneratorUtil.getUUID());
-            user.setInsert_date(new Date());
-            userService.insert(user);
-            ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "操作成功!", null));
+            UserBean used = new UserBean();
+            used.setIs_del("N");
+            used.setUser_number(user.getUser_number());
+            UserBean used_user = userService.selectOne(used);
+            if(null == used_user){
+                user.setUser_id(UUIDGeneratorUtil.getUUID());
+                user.setInsert_date(new Date());
+                userService.insert(user);
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.SUCCESS, "注册成功!", null));
+            }else{
+                ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "账号已存在!", null));
+            }
         } catch (BaseException e) {
             ResponseUtils.renderJson(response, new ResponseResult(ResponseResult.POSTTYPE, ResponseResult.ERROR, "注册失败：" + e.getMessage(), null));
         } catch (Exception e) {
